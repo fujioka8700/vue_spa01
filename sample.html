@@ -1,0 +1,44 @@
+<script>
+    // function greeting(name) {
+    //     alert('Hello ' + name);
+    // }
+
+    // function processUserInput(callback) {
+    //     var name = prompt('Please enter your name.');
+    //     // greeting(name)
+    //     callback(name)
+    // }
+
+    // processUserInput(greeting);
+
+    var getUsers = function (callback) {
+        console.log(1);
+        setTimeout(function () {
+            console.log(22);
+            callback(null, [{
+                    id: 1,
+                    name: 'Takuya Tejima'
+                },
+                {
+                    id: 2,
+                    name: 'Yohei Noda'
+                }
+            ])
+            console.log(333);
+        }, 0);
+    }
+
+    var flg = getUsers((function (err, users) {
+        console.log(2);
+        console.log(users);
+        this.loading = false
+        if (err) {
+            this.error = err.toString()
+        } else {
+            this.users = users
+            console.log(3);
+        }
+    }))
+
+    // console.log(flg);
+</script>
